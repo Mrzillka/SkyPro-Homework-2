@@ -4,7 +4,6 @@ import logging
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(module)s %(levelname)s: %(message)s',
                     filename=r'logs/main_logs.log',
-                    # filename=r'utils_logs.log',
                     filemode='w')
 logger = logging.getLogger(__name__)
 
@@ -36,7 +35,7 @@ class Category:
         self.description = description
         self.products = products
         self.category_count = len(products)
-        self.product_count = len(products)
+        self.product_count = sum(p.quantity for p in self.products)
 
     def __str__(self):
         return f"{self.name}, {self.description}, {self.products}"
@@ -85,9 +84,12 @@ if __name__ == "__main__":
     print(category1.product_count)
 
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
-    category2 = Category("Телевизоры",
-                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
-                         [product4])
+    category2 = Category(
+        "Телевизоры",
+
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+        [product4]
+    )
 
     print(category2.name)
     print(category2.description)
