@@ -34,8 +34,8 @@ class Category:
         self.name = name
         self.description = description
         self.products = products
-        self.category_count = len(products)
-        self.product_count = sum(p.quantity for p in self.products)
+        self.category_count += len(products)
+        self.product_count += sum(p.quantity for p in self.products)
 
     def __str__(self):
         return f"{self.name}, {self.description}, {self.products}"
