@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f56b1339-d3ed-4770-9e25-dd8a4abe530a" name="Changes" comment="init project">
+    <list default="true" id="f56b1339-d3ed-4770-9e25-dd8a4abe530a" name="Changes" comment="add create_obj_from_json">
+      <change afterPath="$PROJECT_DIR$/tests/test_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -20,9 +29,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2m6SFwVDDKyWAKtRUJJI5lxjtgk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -31,20 +40,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;features/homework__14__1&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Programming/SkyPro/HomeWork_3&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python tests.Python tests for test_main.test_category.executor": "Run",
+    "Python tests.Python tests for test_main.test_product.executor": "Run",
+    "Python tests.Python tests in test_main.py.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Programming/SkyPro/HomeWork_3",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Programming\SkyPro\HomeWork_3" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Programming\SkyPro\HomeWork_3\data" />
       <recent name="C:\Programming\SkyPro\HomeWork_3" />
     </key>
   </component>
@@ -112,16 +126,16 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_main.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_main.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests in test_main.py" />
-        <item itemvalue="Python tests.Python tests for test_main.test_product" />
-        <item itemvalue="Python tests.Python tests for test_main.test_category" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Python tests for test_main.test_category" />
+        <item itemvalue="Python tests.Python tests for test_main.test_product" />
       </list>
     </recent_temporary>
   </component>
@@ -149,7 +163,31 @@
       <option name="project" value="LOCAL" />
       <updated>1726396114009</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init project">
+      <option name="closed" value="true" />
+      <created>1726397052745</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726397052745</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add classes Product and Category">
+      <option name="closed" value="true" />
+      <created>1726397349842</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726397349842</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add create_obj_from_json">
+      <option name="closed" value="true" />
+      <created>1726399955378</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726399955378</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,7 +201,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="features/homework_14_1" />
                       </list>
                     </value>
                   </entry>
@@ -176,7 +214,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init project" />
+    <MESSAGE value="add classes Product and Category" />
+    <MESSAGE value="add create_obj_from_json" />
+    <option name="LAST_COMMIT_MESSAGE" value="add create_obj_from_json" />
   </component>
 </project>
