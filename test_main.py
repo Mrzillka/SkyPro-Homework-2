@@ -40,11 +40,29 @@ def test_product(tv_product):
     assert tv_product.description == "Фоновая подсветка"
     assert tv_product.price == 123000.0
     assert tv_product.quantity == 7
+    new_product = Product.new_product(
+        {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
+         "quantity": 5})
+    assert new_product.name == "Samsung Galaxy S23 Ultra"
+    assert new_product.description == "256GB, Серый цвет, 200MP камера"
+    assert new_product.price == 180000.0
+    assert new_product.quantity == 5
+    new_product.price = 800
+    assert new_product.price == 800
 
 
-def test_category(category, smartphone_products):
+def test_category(category, smartphone_products, tv_product):
     assert category.name == "Смартфоны"
     assert category.description == "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни"
-    assert category.products == smartphone_products
+    assert category.products == """Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.
+Iphone 15, 210000.0 руб. Остаток: 8 шт.
+Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.
+"""
     assert category.category_count == 3
     assert category.product_count == 5 + 8 + 14
+    category.add_product(tv_product)
+    assert category.products == """Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.
+Iphone 15, 210000.0 руб. Остаток: 8 шт.
+Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.
+55" QLED 4K, 123000.0 руб. Остаток: 7 шт.
+"""
