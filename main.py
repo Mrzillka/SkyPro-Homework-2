@@ -1,3 +1,58 @@
+import json
+import logging
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s %(module)s %(levelname)s: %(message)s',
+                    filename=r'logs/main_logs.log',
+                    filemode='w')
+logger = logging.getLogger(__name__)
+
+logger.info("Using module main")
+
+
+class Product:
+    name: str
+    description: str
+    price: float
+    quantity: int
+
+    def __init__(self, name, description, price, quantity):
+        self.name = name
+        self.description = description
+        self.price = price
+        self.quantity = quantity
+
+
+class Category:
+    name: str
+    description: str
+    products: list
+    category_count: int = 0
+    product_count: int = 0
+
+    def __init__(self, name, description, products):
+        self.name = name
+        self.description = description
+        self.products = products
+        self.category_count += len(products)
+        self.product_count += sum(p.quantity for p in self.products)
+
+    def __str__(self):
+        return f"{self.name}, {self.description}, {self.products}"
+
+
+def create_obj_from_json(path: str) -> Category:
+    try:
+        with open(path, encoding='utf-8') as f:
+            category_json = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        logger.warning(f'Something went wrong with {path}')
+    for cat in category_json:
+        prod = [Product(p['name'], p['description'], p['price'], p['quantity']) for p in cat['products']]
+        category = Category(cat['name'], cat['description'], prod)
+        yield category
+
+
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
@@ -29,9 +84,12 @@ if __name__ == "__main__":
     print(category1.product_count)
 
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
-    category2 = Category("Телевизоры",
-                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
-                         [product4])
+    category2 = Category(
+        "Телевизоры",
+
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+        [product4]
+    )
 
     print(category2.name)
     print(category2.description)
