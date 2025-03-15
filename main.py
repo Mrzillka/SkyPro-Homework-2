@@ -74,6 +74,22 @@ class Category:
         return prods
 
 
+class CategoryIterator:
+    def __init__(self, category):
+        self.category = category
+
+    def __iter__(self):
+        self.product_number = -1
+        return self
+
+    def __next__(self):
+        if self.product_number + 1 < len(self.category.products.split("\n")) - 1:
+            self.product_number += 1
+            return self.category.products.split("\n")[self.product_number]
+        else:
+            raise StopIteration
+
+
 def create_obj_from_json(path: str) -> Generator[Category, Any, None]:
     try:
         with open(path, encoding='utf-8') as f:
@@ -108,3 +124,6 @@ if __name__ == '__main__':
     print(product1 + product2)
     print(product1 + product3)
     print(product2 + product3)
+
+    for prod in CategoryIterator(category1):
+        print(prod)
