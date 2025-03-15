@@ -1,5 +1,6 @@
 import json
 import logging
+from typing import Any, Generator
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(module)s %(levelname)s: %(message)s',
@@ -73,7 +74,7 @@ class Category:
         return prods
 
 
-def create_obj_from_json(path: str) -> Category:
+def create_obj_from_json(path: str) -> Generator[Category, Any, None]:
     try:
         with open(path, encoding='utf-8') as f:
             category_json = json.load(f)
