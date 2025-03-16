@@ -60,6 +60,17 @@ def tv_product():
 
 
 @pytest.fixture()
+def grass_product():
+    return LawnGrass("Nice Grass",
+                     "This simply a nice grass",
+                     1000,
+                     17,
+                     "Russia",
+                     "17 days",
+                     "white")
+
+
+@pytest.fixture()
 def category(smartphone_products_as_products):
     return Category(
         "Смартфоны",
@@ -85,6 +96,8 @@ def test_product(tv_product):
     assert new_product.price == 180000.0
     assert new_product.quantity == 5
     new_product.price = 800
+    assert new_product.price == 800
+    new_product.price = -1
     assert new_product.price == 800
     assert tv_product + new_product, 123000.0 * 7 + 800 * 5
 
@@ -123,8 +136,47 @@ def test_smartphone(smartphone_products_as_smartphones):
 
     new_smartphone.price = 800
     assert new_smartphone.price == 800
+    new_smartphone.price = -1
+    assert new_smartphone.price == 800
 
     assert s1 + new_smartphone == 180000.0 * 5 + 800 * 14
+
+
+def test_grass(grass_product):
+    assert grass_product.name == "Nice Grass"
+    assert grass_product.description == "This simply a nice grass"
+    assert grass_product.price == 1000.0
+    assert grass_product.quantity == 17
+    assert grass_product.country == "Russia"
+    assert grass_product.germination_period == "17 days"
+    assert grass_product.color == "white"
+
+
+    new_grass = LawnGrass.new_product(
+        {
+            "name": "Bad Grass",
+            "description": "Not a very good grass",
+            "price": 999.99,
+            "quantity": 99,
+            "country": "Sahara",
+            "germination_period": "99 days",
+            "color": "black",
+        }
+    )
+    assert new_grass.name == "Bad Grass"
+    assert new_grass.description == "Not a very good grass"
+    assert new_grass.price == 999.99
+    assert new_grass.quantity == 99
+    assert new_grass.country == "Sahara"
+    assert new_grass.germination_period == "99 days"
+    assert new_grass.color == "black"
+
+    new_grass.price = 800
+    assert new_grass.price == 800
+    new_grass.price = -1
+    assert new_grass.price == 800
+
+    assert grass_product + new_grass == 1000.0 * 17 + 800 * 99
 
 
 def test_products_sum(smartphone_products_as_smartphones, tv_product):
@@ -154,6 +206,7 @@ Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.
 
 
 def test_create_obj_from_json():
+    assert list(create_obj_from_json("Not_a_path.json")) == []
     for obj in create_obj_from_json("data/products.json"):
         assert str(obj) in ("Смартфоны, количество продуктов: 27 шт.", "Телевизоры, количество продуктов: 7 шт.")
 

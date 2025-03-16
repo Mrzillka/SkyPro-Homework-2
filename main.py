@@ -27,7 +27,7 @@ class Product:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        if isinstance(other, self.__class__):
+        if type(other) == self.__class__:
             return self.__price * self.quantity + other.price * other.quantity
         raise TypeError
 
@@ -148,6 +148,7 @@ def create_obj_from_json(path: str) -> Generator[Category, Any, None]:
             category_json = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         logger.warning(f'Something went wrong with {path}')
+        return
     for cat in category_json:
         prod = [Product(p['name'], p['description'], p['price'], p['quantity']) for p in cat['products']]
         category = Category(cat['name'], cat['description'], prod)
