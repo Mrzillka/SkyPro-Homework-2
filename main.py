@@ -74,6 +74,33 @@ class Category:
         return prods
 
 
+class Smartphone(Product):
+    efficiency: None
+    model: str
+    memory: None
+    color: None
+
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name,description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    country: str
+    germination_period: None
+    color: str
+
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+
+
 class CategoryIterator:
     def __init__(self, category):
         self.category = category
