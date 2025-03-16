@@ -127,7 +127,7 @@ def test_smartphone(smartphone_products_as_smartphones):
     assert s1 + new_smartphone == 180000.0 * 5 + 800 * 14
 
 
-def test_products_add(smartphone_products_as_smartphones, tv_product):
+def test_products_sum(smartphone_products_as_smartphones, tv_product):
     assert smartphone_products_as_smartphones[0] + smartphone_products_as_smartphones[2] == 180000.0 * 5 + 31000 * 14
 
     with pytest.raises(TypeError):
@@ -149,6 +149,8 @@ Iphone 15, 210000.0 руб. Остаток: 8 шт.
 Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.
 55" QLED 4K, 123000.0 руб. Остаток: 7 шт.
 """
+    with pytest.raises(TypeError):
+        category.add_product("Not a product")
 
 
 def test_create_obj_from_json():
