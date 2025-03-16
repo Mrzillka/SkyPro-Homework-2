@@ -49,6 +49,7 @@ def test_product(tv_product):
     assert new_product.quantity == 5
     new_product.price = 800
     assert new_product.price == 800
+    assert tv_product + new_product, 123000.0 * 7 + 800 * 5
 
 
 def test_category(category, smartphone_products, tv_product):
@@ -66,3 +67,16 @@ Iphone 15, 210000.0 руб. Остаток: 8 шт.
 Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.
 55" QLED 4K, 123000.0 руб. Остаток: 7 шт.
 """
+
+
+def test_create_obj_from_json():
+    for obj in create_obj_from_json("data/products.json"):
+        assert str(obj) in ("Смартфоны, количество продуктов: 27 шт.", "Телевизоры, количество продуктов: 7 шт.")
+
+def test_category_iterator(category):
+    lst = []
+    for prod in CategoryIterator(category):
+        lst.append(prod)
+    assert lst == ["Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.",
+                   "Iphone 15, 210000.0 руб. Остаток: 8 шт.",
+                   "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."]
