@@ -143,6 +143,12 @@ class CategoryIterator:
 
 
 def create_obj_from_json(path: str) -> Generator[Category, Any, None]:
+    """
+    Creates a generator using a json file
+
+    :param path: any str
+    :return: Generator object
+    """
     try:
         with open(path, encoding='utf-8') as f:
             category_json = json.load(f)
