@@ -10,7 +10,7 @@
 
 1. Клонируйте репозиторий:
     ```
-    git clone https://github.com/Mrzillka/SkyPro-Homework-3.git
+    git clone https://github.com/Mrzillka/SkyPro-Homework-2.git
     ```
 
 ## Использование:
@@ -31,9 +31,29 @@
 - - `quantity: int`
 
 
+- `class Smartphone(Product)`
+- - `efficiency: float`
+- - `model: str`
+- - `memory: int`
+- - `color: str`
+
+
+- `class LawnGrass(Product)`
+- - `country: str`
+- - `germination_period: str`
+- - `color: str`
+
+
 - `class Category`
 - - `name: str`
 - - `description: str`
 - - `products: list`
 - - `category_count: int`
 - - `product_count: int`
+
+
+- `class CategoryIterator`
+
+
+- `def create_obj_from_json(path)`
+- - "Creates a generator using a json file"
