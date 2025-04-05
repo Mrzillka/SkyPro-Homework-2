@@ -12,6 +12,11 @@ logger = logging.getLogger(__name__)
 logger.info("Using module main")
 
 
+class MixinPrintOnCreate:
+    def __init__(self, cls):
+        print(cls.__repr__())
+
+
 class BaseProduct(ABC):
 
     @classmethod
@@ -24,7 +29,7 @@ class BaseProduct(ABC):
         pass
 
 
-class Product(BaseProduct):
+class Product(MixinPrintOnCreate, BaseProduct):
     name: str
     description: str
     price: float
@@ -35,9 +40,13 @@ class Product(BaseProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__(self)
 
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, {self.__price}, {self.quantity})"
 
     def __add__(self, other):
         if type(other) == self.__class__:
@@ -82,7 +91,6 @@ class Category:
             raise TypeError
         self.__products.append(prod)
         self.product_count += 1
-
 
     @property
     def products(self):
