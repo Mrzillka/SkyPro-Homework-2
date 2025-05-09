@@ -24,6 +24,12 @@
 
 ### `main.py`
 
+- `class MixinPrintOnCreate`
+
+
+- `class BaseProduct`
+
+
 - `class Product`
 - - `name: str`
 - - `description: str`
