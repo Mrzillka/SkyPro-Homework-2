@@ -151,7 +151,6 @@ def test_grass(grass_product):
     assert grass_product.germination_period == "17 days"
     assert grass_product.color == "white"
 
-
     new_grass = LawnGrass.new_product(
         {
             "name": "Bad Grass",
@@ -219,6 +218,12 @@ def test_category_iterator(category):
                    "Iphone 15, 210000.0 руб. Остаток: 8 шт.",
                    "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."]
 
+
 def test_product_zero_quantity():
     with pytest.raises(ValueError):
         Product("...", "...", "...", 0)
+
+
+def test_category_average_cost(category):
+    assert round(category.middle_price(), 2) == 15592.59
+    assert Category("...", "...", []).middle_price() == 0

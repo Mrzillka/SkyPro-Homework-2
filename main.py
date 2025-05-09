@@ -101,6 +101,14 @@ class Category:
             prods += f"{p}\n"
         return prods
 
+    def middle_price(self):
+        summa = sum(product.price for product in self.__products)
+        try:
+            return summa / self.product_count
+        except ZeroDivisionError:
+            return 0
+
+
 
 class Smartphone(Product):
     efficiency: float
